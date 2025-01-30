@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root "vehicle#new"
+
+  post "vehicle/license_plate"
+  post "vehicle/make_model"
+  post "vehicle/ssn"
+  post "vehicle/success"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

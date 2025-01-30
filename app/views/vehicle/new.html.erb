@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= turbo_frame_tag "form" do %>
+        <%= render @partial %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ssn-modal" tabindex="-1" aria-labelledby="ssnModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <%= turbo_frame_tag "modal" do %>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .modal {
+    display: none;
+  }
+  
+  .modal.show {
+    display: block;
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+</style>

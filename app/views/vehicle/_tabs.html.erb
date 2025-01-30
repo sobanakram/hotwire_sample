@@ -1,0 +1,12 @@
+ <!-- Vehicle Lookup Section -->
+<h5 class="mb-3">Find your vehicle by</h5>
+<div class="btn-group w-100 mb-4" role="group">
+    <input type="radio" class="btn-check" name="lookup_type" id="vin" autocomplete="off" <%= @partial == "vin" ? "checked" : "disabled" %>>
+    <label class="btn btn-outline-primary" for="vin">VIN</label>
+
+    <input type="radio" class="btn-check" name="lookup_type" id="license" autocomplete="off" <%= @partial == "license_plate" ? "checked" : "disabled" %>>
+    <label class="btn btn-outline-primary" for="license">License plate</label>
+
+    <input type="radio" class="btn-check" name="lookup_type" id="make_model" autocomplete="off" <%= @partial == "make_model" ? "checked" : "disabled" %>>
+    <label class="btn btn-outline-primary" for="make_model">Make & Model</label>
+</div>

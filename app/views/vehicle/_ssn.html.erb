@@ -1,0 +1,63 @@
+<div class="modal-content rounded-top-4 border-0">
+  <div class="modal-header border-0">
+    <h5 class="modal-title">Finalize your rate</h5>
+  </div>
+
+  <div class="modal-body">
+    <%= form_with(url: vehicle_success_path) do |f| %>
+      <div class="mb-3">
+        <div class="input-group">
+          <%= f.text_field :ssn, 
+              class: "form-control", 
+              placeholder: "Enter your Social Security Number (SSN)",
+              "aria-label": "SSN",
+              data: { mask: "000-00-0000" } %>
+          <span class="input-group-text">
+            <i class="bi bi-shield-lock"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="form-check">
+          <%= f.check_box :terms, class: "form-check-input", required: true %>
+          <label class="form-check-label">
+            I have read and agree to the 
+            <%= link_to "Credit Report Authorization", "#", class: "text-primary" %>
+            and
+            <%= link_to "Terms & Conditions", "#", class: "text-primary" %>
+          </label>
+        </div>
+      </div>
+
+      <%= f.submit "Submit information", class: "btn btn-primary w-100 mb-3" %>
+      <%= link_to "Select a different offer", "#", class: "btn btn-outline-primary w-100" %>
+    <% end %>
+  </div>
+</div>
+
+<%= content_for :head do %>
+  <style>
+    @media (max-width: 768px) {
+      .modal-dialog {
+        margin: 0;
+      }
+      
+      .modal.show .modal-content {
+        transform: translateY(0);
+        transition: transform 0.3s ease-out;
+      }
+
+      .modal .modal-content {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        max-height: 90vh;
+        transform: translateY(100%);
+      }
+    }
+  </style>
+<% end %>
+<script>new bootstrap.Modal(document.getElementById('ssn-modal')).show();</script>

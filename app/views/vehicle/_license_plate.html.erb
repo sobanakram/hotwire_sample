@@ -1,0 +1,41 @@
+
+  <%= form_with(url: vehicle_make_model_path) do |f| %>
+  <%= render "tabs" %>
+    <div class="mb-3">
+      <%= f.text_field :license_plate, class: 'form-control', placeholder: 'License plate number' %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.select :state, 
+          options_for_select(US_STATES),
+          { prompt: 'State' },
+          { class: 'form-select' } 
+      %>
+    </div>
+
+    <!-- Financing Information Section -->
+    <h5 class="mb-3">Financing information</h5>
+    <div class="mb-3">
+      <%= f.text_field :amount_owed, class: 'form-control', placeholder: 'How much do you owe?' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.text_field :mileage, class: 'form-control', placeholder: 'How many miles are on your vehicle?' %>
+    </div>
+
+    <div class="mb-4">
+      <p class="mb-3">Is there anyone else on your current loan?</p>
+      
+      <div class="form-check mb-2">
+        <%= f.radio_button :has_co_borrower, false, class: 'form-check-input', id: 'no_co_borrower' %>
+        <%= f.label :has_co_borrower_false, 'No one else, just me', class: 'form-check-label', for: 'no_co_borrower' %>
+      </div>
+      
+      <div class="form-check">
+        <%= f.radio_button :has_co_borrower, true, class: 'form-check-input', id: 'has_co_borrower' %>
+        <%= f.label :has_co_borrower_true, 'Yes, I have a co-borrower or co-signer', class: 'form-check-label', for: 'has_co_borrower' %>
+      </div>
+    </div>
+
+    <%= f.submit 'Continue', class: 'btn btn-primary w-100' %>
+  <% end %>
