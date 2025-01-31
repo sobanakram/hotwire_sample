@@ -1,9 +1,11 @@
-<div class="modal-content rounded-top-4 border-0">
-  <div class="modal-header border-0">
-    <h5 class="modal-title">Finalize your rate</h5>
+<div class="modal-content">
+  <div class="modal-header border-0 pb-0">
+    <div class="w-100 text-center">
+      <h5 class="modal-title mb-0">Finalize your rate</h5>
+    </div>
   </div>
 
-  <div class="modal-body">
+  <div class="modal-body pt-3">
     <%= form_with(url: vehicle_success_path) do |f| %>
       <div class="mb-3">
         <div class="input-group">
@@ -21,7 +23,7 @@
       <div class="mb-4">
         <div class="form-check">
           <%= f.check_box :terms, class: "form-check-input", required: true %>
-          <label class="form-check-label">
+          <label class="form-check-label small">
             I have read and agree to the 
             <%= link_to "Credit Report Authorization", "#", class: "text-primary" %>
             and
@@ -31,7 +33,9 @@
       </div>
 
       <%= f.submit "Submit information", class: "btn btn-primary w-100 mb-3" %>
-      <%= link_to "Select a different offer", "#", class: "btn btn-outline-primary w-100" %>
+      <%= link_to "Select a different offer", "#", 
+          class: "btn btn-outline-primary w-100",
+          data: { bs_dismiss: "modal" } %>
     <% end %>
   </div>
 </div>

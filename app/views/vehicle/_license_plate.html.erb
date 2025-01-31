@@ -1,6 +1,6 @@
 
-  <%= form_with(url: vehicle_make_model_path) do |f| %>
-  <%= render "tabs" %>
+  <%= form_with(url: "#", local: true) do |f| %>
+
     <div class="mb-3">
       <%= f.text_field :license_plate, class: 'form-control', placeholder: 'License plate number' %>
     </div>
@@ -37,5 +37,5 @@
       </div>
     </div>
 
-    <%= f.submit 'Continue', class: 'btn btn-primary w-100' %>
+    <%= f.submit 'Continue', class: 'btn btn-primary w-100', onclick: "bootstrap.Tab.getOrCreateInstance(document.querySelector('#make-model-tab')).show(); return false;" %>
   <% end %>

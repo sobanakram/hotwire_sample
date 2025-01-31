@@ -1,5 +1,4 @@
 <%= form_with(url: vehicle_ssn_path) do |f| %>
-<%= render "tabs" %>
   <div class="mb-3">
     <%= f.select :year,
         options_for_select((Time.current.year - 30..Time.current.year).reverse_each.to_a),

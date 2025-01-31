@@ -1,35 +1,120 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <%= turbo_frame_tag "form" do %>
-        <%= render @partial %>
-      <% end %>
+      <h5 class="mb-3">Find your vehicle by</h5>
+      
+      <ul class="nav nav-pills bg-light rounded-pill p-1 mb-4" role="tablist">
+        <li class="nav-item flex-grow-1" role="presentation">
+          <%= link_to "VIN", "#vin-tab", 
+              class: "nav-link text-center active", 
+              id: "vin-tab",
+              data: { 
+                bs_toggle: "tab",
+                bs_target: "#vin-content"
+              },
+              role: "tab",
+              aria: { controls: "vin-content", selected: true } %>
+        </li>
+        <li class="nav-item flex-grow-1" role="presentation">
+          <%= link_to "License plate", "#license-tab", 
+              class: "nav-link text-center",
+              id: "license-tab",
+              data: { 
+                bs_toggle: "tab",
+                bs_target: "#license-content"
+              },
+              role: "tab",
+              aria: { controls: "license-content", selected: false } %>
+        </li>
+        <li class="nav-item flex-grow-1" role="presentation">
+          <%= link_to "Make & Model", "#make-model-tab", 
+              class: "nav-link text-center",
+              id: "make-model-tab",
+              data: { 
+                bs_toggle: "tab",
+                bs_target: "#make-model-content"
+              },
+              role: "tab",
+              aria: { controls: "make-model-content", selected: false } %>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="vehicleTabContent">
+        <div class="tab-pane fade show active" id="vin-content" role="tabpanel" aria-labelledby="vin-tab">
+          <%= render "vin" %>
+        </div>
+
+        <div class="tab-pane fade" id="license-content" role="tabpanel" aria-labelledby="license-tab">
+          <%= render "license_plate" %>
+        </div>
+
+        <div class="tab-pane fade" id="make-model-content" role="tabpanel" aria-labelledby="make-model-tab">
+          <%= render "make_model" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="ssn-modal" tabindex="-1" aria-labelledby="ssnModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog">
     <%= turbo_frame_tag "modal" do %>
     <% end %>
   </div>
 </div>
 
 <style>
-  .modal {
-    display: none;
-  }
-  
-  .modal.show {
-    display: block;
+  .nav-pills .nav-link {
+    border-radius: 50rem;
+    color: var(--bs-body-color);
   }
 
-  .modal-backdrop {
+  .nav-pills .nav-link.active {
+    background-color: var(--bs-primary);
+    color: white;
+  }
+
+  .modal-dialog {
+    margin: 0;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+  }
+
+  .modal.fade .modal-dialog {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .modal.fade.show .modal-dialog {
+    transform: translateY(0);
+  }
+
+  .modal-content {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    min-height: auto;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  /* Drag indicator */
+  /* .modal-header::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background-color: #dee2e6;
+    border-radius: 2px;
+    margin: 0 auto 0.5rem;
+  } */
+
+  /* Background overlay */
+  .modal-backdrop {
     background-color: rgba(0, 0, 0, 0.5);
   }
 </style>
