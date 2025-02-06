@@ -19,9 +19,18 @@ class VehicleController < ApplicationController
     end
   end
 
+  def show_offer
+    respond_to do |format|
+      format.turbo_stream { 
+        render turbo_stream: turbo_stream.update("body", partial: "offer_summary")
+      }
+      format.html { render :new }
+    end
+  end
+
   def ssn
     respond_to do |format|
-      format.turbo_stream {
+      format.turbo_stream { 
         render turbo_stream: [
           turbo_stream.update("modal", partial: "ssn")
         ]

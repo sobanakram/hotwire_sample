@@ -56,13 +56,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="ssn-modal" tabindex="-1" aria-labelledby="ssnModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <%= turbo_frame_tag "modal" do %>
-    <% end %>
-  </div>
-</div>
-
 <style>
   .nav-pills .nav-link {
     border-radius: 50rem;
@@ -72,49 +65,5 @@
   .nav-pills .nav-link.active {
     background-color: var(--bs-primary);
     color: white;
-  }
-
-  .modal-dialog {
-    margin: 0;
-    position: fixed;
-    bottom: 0;
-    height: auto;
-    width: 100%;
-  }
-
-  .modal.fade .modal-dialog {
-    transform: translateY(100%);
-    transition: transform 0.3s ease-out;
-  }
-
-  .modal.fade.show .modal-dialog {
-    transform: translateY(0);
-  }
-
-  .modal-content {
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border: none;
-    min-height: auto;
-    max-height: 95vh;
-    overflow-y: auto;
-  }
-
-  /* Drag indicator */
-  /* .modal-header::before {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 4px;
-    background-color: #dee2e6;
-    border-radius: 2px;
-    margin: 0 auto 0.5rem;
-  } */
-
-  /* Background overlay */
-  .modal-backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
   }
 </style>

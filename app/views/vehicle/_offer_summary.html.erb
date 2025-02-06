@@ -1,0 +1,102 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="small text-secondary mb-2">Your offers¹</div>
+          
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-secondary">Estimated amount financed⁴</span>
+            <span>$20,304</span>
+          </div>
+
+          <div class="text-center py-3 border-top border-bottom">
+            <div class="text-secondary mb-1">LOWEST MONTHLY PAYMENT</div>
+            <div class="d-flex align-items-center justify-content-center">
+              <span class="h2 text-primary mb-0">$492</span>
+              <span class="ms-2">/Month</span>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="text-secondary">Estimated monthly savings³</span>
+            <span class="text-success">$179</span>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span class="text-secondary">Estimated total savings</span>
+            <span class="text-success">$857</span>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span class="text-secondary">Term</span>
+            <span>72 months</span>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span class="text-secondary">Estimated Annual Percentage Rate⁵</span>
+            <span>11%</span>
+          </div>
+
+          <%= button_to "Choose and go!", vehicle_ssn_path, 
+              class: "btn btn-primary w-100 mt-3",
+              data: { turbo_frame: "modal" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ssn-modal" tabindex="-1" aria-labelledby="ssnModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <%= turbo_frame_tag "modal" do %>
+    <% end %>
+  </div>
+</div>
+
+<style>
+
+  .modal-dialog {
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+  }
+
+  .modal.fade .modal-dialog {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .modal.fade.show .modal-dialog {
+    transform: translateY(0);
+  }
+
+  .modal-content {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    min-height: auto;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  /* Drag indicator */
+  /* .modal-header::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background-color: #dee2e6;
+    border-radius: 2px;
+    margin: 0 auto 0.5rem;
+  } */
+
+  /* Background overlay */
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+</style>

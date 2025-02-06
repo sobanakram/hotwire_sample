@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   post "vehicle/license_plate"
   post "vehicle/make_model"
+  post "vehicle/show_offer"
   post "vehicle/ssn"
   post "vehicle/success"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
