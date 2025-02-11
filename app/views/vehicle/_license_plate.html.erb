@@ -1,41 +1,38 @@
+<%= simple_form_for :vehicle, url: "#" do |f| %>
+  <%= f.input :license_plate,
+      placeholder: 'License plate number',
+      label: false,
+      wrapper_html: { class: 'mb-3' } %>
 
-  <%= form_with(url: "#", local: true) do |f| %>
+  <%= f.input :state,
+      collection: US_STATES,
+      prompt: 'State',
+      label: false,
+      wrapper_html: { class: 'mb-4' } %>
 
-    <div class="mb-3">
-      <%= f.text_field :license_plate, class: 'form-control', placeholder: 'License plate number' %>
-    </div>
+  <h5 class="mb-3">Financing information</h5>
+  
+  <%= f.input :amount_owed,
+      placeholder: 'How much do you owe?',
+      label: false,
+      wrapper_html: { class: 'mb-3' } %>
 
-    <div class="mb-4">
-      <%= f.select :state, 
-          options_for_select(US_STATES),
-          { prompt: 'State' },
-          { class: 'form-select' } 
-      %>
-    </div>
+  <%= f.input :mileage,
+      placeholder: 'How many miles are on your vehicle?',
+      label: false,
+      wrapper_html: { class: 'mb-3' } %>
 
-    <!-- Financing Information Section -->
-    <h5 class="mb-3">Financing information</h5>
-    <div class="mb-3">
-      <%= f.text_field :amount_owed, class: 'form-control', placeholder: 'How much do you owe?' %>
-    </div>
+  <div class="mb-4">
+    <p class="mb-3">Is there anyone else on your current loan?</p>
+    
+    <%= f.collection_radio_buttons :has_co_borrower, 
+        [[false, 'No one else, just me'], [true, 'Yes, I have a co-borrower or co-signer']], 
+        :first, 
+        :last,
+        item_wrapper_class: 'form-check mb-2' %>
+  </div>
 
-    <div class="mb-3">
-      <%= f.text_field :mileage, class: 'form-control', placeholder: 'How many miles are on your vehicle?' %>
-    </div>
-
-    <div class="mb-4">
-      <p class="mb-3">Is there anyone else on your current loan?</p>
-      
-      <div class="form-check mb-2">
-        <%= f.radio_button :has_co_borrower, false, class: 'form-check-input', id: 'no_co_borrower' %>
-        <%= f.label :has_co_borrower_false, 'No one else, just me', class: 'form-check-label', for: 'no_co_borrower' %>
-      </div>
-      
-      <div class="form-check">
-        <%= f.radio_button :has_co_borrower, true, class: 'form-check-input', id: 'has_co_borrower' %>
-        <%= f.label :has_co_borrower_true, 'Yes, I have a co-borrower or co-signer', class: 'form-check-label', for: 'has_co_borrower' %>
-      </div>
-    </div>
-
-    <%= f.submit 'Continue', class: 'btn btn-primary w-100', onclick: "bootstrap.Tab.getOrCreateInstance(document.querySelector('#make-model-tab')).show(); return false;" %>
-  <% end %>
+  <%= f.button :submit, 'Continue', 
+      class: 'btn-primary w-100',
+      onclick: "bootstrap.Tab.getOrCreateInstance(document.querySelector('#make-model-tab')).show(); return false;" %>
+<% end %>

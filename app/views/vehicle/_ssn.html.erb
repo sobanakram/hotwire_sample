@@ -6,33 +6,29 @@
   </div>
 
   <div class="modal-body pt-3">
-    <%= form_with(url: vehicle_success_path) do |f| %>
-      <div class="mb-3">
-        <div class="input-group">
-          <%= f.text_field :ssn, 
-              class: "form-control", 
-              placeholder: "Enter your Social Security Number (SSN)",
-              "aria-label": "SSN",
-              data: { mask: "000-00-0000" } %>
-          <span class="input-group-text">
-            <i class="bi bi-shield-lock"></i>
-          </span>
-        </div>
+    <%= simple_form_for :vehicle, url: vehicle_success_path do |f| %>
+      <div class="input-group mb-3">
+        <%= f.input :ssn,
+            placeholder: 'Enter your Social Security Number (SSN)',
+            label: false,
+            wrapper: false,
+            input_html: { data: { mask: "000-00-0000" } } %>
+        <span class="input-group-text">
+          <i class="bi bi-shield-lock"></i>
+        </span>
       </div>
 
       <div class="mb-4">
-        <div class="form-check">
-          <%= f.check_box :terms, class: "form-check-input", required: true %>
-          <label class="form-check-label small">
-            I have read and agree to the 
-            <%= link_to "Credit Report Authorization", "#", class: "text-primary" %>
-            and
-            <%= link_to "Terms & Conditions", "#", class: "text-primary" %>
-          </label>
-        </div>
+        <%= f.input :terms,
+            as: :boolean,
+            label: raw('I have read and agree to the ' + 
+                      link_to("Credit Report Authorization", "#", class: "text-primary") +
+                      ' and ' +
+                      link_to("Terms & Conditions", "#", class: "text-primary")),
+            required: true %>
       </div>
 
-      <%= f.submit "Submit information", class: "btn btn-primary w-100 mb-3" %>
+      <%= f.button :submit, 'Submit information', class: 'btn-primary w-100 mb-3' %>
       <%= link_to "Select a different offer", "#", 
           class: "btn btn-outline-primary w-100",
           data: { bs_dismiss: "modal" } %>
